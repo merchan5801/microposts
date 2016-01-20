@@ -17,11 +17,27 @@ class UsersController < ApplicationController
     end
   end
 
-  private
+#編集と更新を追加
+  def edit
+    end
+  
+  def update
+    if @user(user_params)
+      # 保存に成功した場合はユーザページへリダイレクト
+      redirect_to @user: 'プロフィールを編集しました'
+    else
+      # 保存に失敗した場合は編集画面へ戻す
+      render 'edit'
+    end
+  end
+
+
+private
+ #paramsにプロフィールと地域を追加
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
-  end  
-  
+                                 :password_confirmation,profile,locate)
+  end
 end
+
