@@ -11,33 +11,30 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "こんにちは　サンプルへ　Welcome to the Sample App!"
-      redirect_to @user # ここを修正
+      redirect_to @user
     else
       render 'new'
     end
   end
 
-#編集と更新を追加
   def edit
-    end
-  
+    @user = User.find(params[:id])
+  end
+
   def update
-    if @user(user_params)
-      # 保存に成功した場合はユーザページへリダイレクト
-      redirect_to @user: 'プロフィールを編集しました'
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+			flash[:success] = "success modifing!"
+			redirect_to @user
     else
-      # 保存に失敗した場合は編集画面へ戻す
       render 'edit'
     end
   end
 
-
-private
- #paramsにプロフィールと地域を追加
+  private
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation,profile,locate)
+                                   :password_confirmation, :profile, :locate)
   end
 end
-

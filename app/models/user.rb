@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  　# プロフィールは任意力かつ300文字以内
-  validates :profile , length: { maximum: 300 } 
-  # 内容は任意入力かつ10文字以下
-  validates :locate , length: { maximum: 10 } 
+  validates :profile , length: { maximum: 300 }, on: :update
+  validates :locate , length: { maximum: 10 }, on: :update
 end
