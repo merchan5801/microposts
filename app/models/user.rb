@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :profile , length: { maximum: 300 }, on: :update
   validates :locate , length: { maximum: 10 }, on: :update
+  
+  has_many :microposts
 end
