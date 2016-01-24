@@ -9,6 +9,9 @@
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
+　　  <p>地域:<%= @user.locate %></p>
+  　　<p>プロフィール:<%= @user.profile %></p>
+    
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
