@@ -38,14 +38,16 @@ class UsersController < ApplicationController
   def following
     @title = "Following"
     @user  = User.find(params[:id])
-    @users = @user.following_users
+    #ページネーションとして既存の数値に「.page(params[:page])」を追加
+    @users = @user.following_users.page(params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
-    @users = @user.follower_users
+    #ページネーションとして既存の数値に「.page(params[:page])」を追加
+    @users = @user.follower_users.page(params[:page])
     render 'show_follow'
   end
 

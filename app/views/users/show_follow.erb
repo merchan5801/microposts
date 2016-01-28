@@ -12,12 +12,24 @@
       <p>地域:<%= @user.locate %></p>
   　　<p>プロフィール:<%= @user.profile %></p>
   </aside>
+<!--ここ削除-->
+<!--ユーザー表示の一覧に入れる-->
+<%#= page_entries_info @user %>
+
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
+        <!--フォロー・フォロワーのページネーション上部インフォメーション部分-->
+        <%= page_entries_info @users %>
         <%= render @users %>
+        <!--フォロー・フォロワーのページネーション下部の実行部分-->
+        <%= will_paginate @users %>
       </ul>
     <% end %>
   </div>
+<!--ここ削除-->
+<!--ユーザー表示の一覧に入れる-->
+<%#= will_paginate @user %>
+
 </div>
