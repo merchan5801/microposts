@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # ↓ここもページネーションしたい。この場所はusersコントローラーのshowアクションだから該当のviewは・・・
-    @microposts = @user.microposts.order(created_at: :desc).page(params[:page])`
+    @microposts = @user.microposts.order(created_at: :desc).page(params[:page])
     #エラーになるのですが、メソッドの書き方よくわからないです
     
   end
