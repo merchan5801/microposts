@@ -18,7 +18,13 @@
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
+        <!--ここもページネーションしたい。このファイルはusersフォルダのshowだから該当コントローラーは・・・-->
+        <!--マイクロポストのページネーション上部インフォメーション部分-->
+        <%= page_entries_info @microposts %>
         <%= render @microposts %>
+        <!--マイクロポストのページネーション下部の実行部分-->
+        <%= will_paginate @microposts %>        
+        
       </ol>
     <% end %>
   </div>
