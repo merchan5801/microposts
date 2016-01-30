@@ -1,0 +1,9 @@
+<% if @feed_items.any? %>
+  <ol class="microposts">
+    <!--フィードアイテムのページネーション上部インフォメーション部分-->
+    <%= page_entries_info @feed_items %>
+    <%= render @feed_items %>
+    <!--フィードアイテムのページネーション下部の本体部分-->
+    <%= will_paginate @feed_items %>
+  </ol>
+<% end %>
